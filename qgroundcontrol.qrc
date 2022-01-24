@@ -178,7 +178,7 @@
         <file alias="QGroundControl/Controls/TerrainStatus.qml">src/PlanView/TerrainStatus.qml</file>
         <file alias="QGroundControl/Controls/TakeoffItemMapVisual.qml">src/PlanView/TakeoffItemMapVisual.qml</file>
         <file alias="QGroundControl/Controls/ToolStrip.qml">src/QmlControls/ToolStrip.qml</file>
-       	<file alias="QGroundControl/Controls/ToolStripHoverButton.qml">src/QmlControls/ToolStripHoverButton.qml</file>
+        <file alias="QGroundControl/Controls/ToolStripHoverButton.qml">src/QmlControls/ToolStripHoverButton.qml</file>
         <file alias="QGroundControl/Controls/TransectStyleComplexItemStats.qml">src/PlanView/TransectStyleComplexItemStats.qml</file>
         <file alias="QGroundControl/Controls/TransectStyleComplexItemTabBar.qml">src/PlanView/TransectStyleComplexItemTabBar.qml</file>
         <file alias="QGroundControl/Controls/TransectStyleComplexItemTerrainFollow.qml">src/PlanView/TransectStyleComplexItemTerrainFollow.qml</file>
@@ -258,6 +258,15 @@
         <file alias="QGroundControl/FlightMap/VehicleMapItem.qml">src/FlightMap/MapItems/VehicleMapItem.qml</file>
         <file alias="QGroundControl/ScreenTools/qmldir">src/QmlControls/QGroundControl/ScreenTools/qmldir</file>
         <file alias="QGroundControl/ScreenTools/ScreenTools.qml">src/QmlControls/ScreenTools.qml</file>
+        <file alias="QGroundControl/Custom/qmldir">src/QmlControls/QGroundControl/Custom/qmldir</file>
+        <file alias="QGroundControl/Custom/HideableMenu.qml">src/ui/custom/HideableMenu.qml</file>
+        <file alias="QGroundControl/Custom/FloatDialogList.qml">src/ui/custom/FloatDialogList.qml</file>
+        <file alias="QGroundControl/Custom/FloatMenu.qml">src/ui/custom/FloatMenu.qml</file>
+        <file alias="QGroundControl/Custom/CameraWindow.qml">src/ui/custom/CameraWindow.qml</file>
+        <file alias="QGroundControl/Custom/subPageCamera.qml">src/ui/custom/SideMenuSubPages/subPageCamera.qml</file>
+        <file alias="QGroundControl/Custom/subPageParameter.qml">src/ui/custom/SideMenuSubPages/subPageParameter.qml</file>
+        <file alias="QGroundControl/Custom/subPageSailInfo.qml">src/ui/custom/SideMenuSubPages/subPageSailInfo.qml</file>
+        <file alias="QGroundControl/Custom/subPageSystemSetting.qml">src/ui/custom/SideMenuSubPages/subPageSystemSetting.qml</file>
         <file alias="QmlTest.qml">src/QmlControls/QmlTest.qml</file>
         <file alias="RadioComponent.qml">src/AutoPilotPlugins/Common/RadioComponent.qml</file>
         <file alias="SerialSettings.qml">src/ui/preferences/SerialSettings.qml</file>

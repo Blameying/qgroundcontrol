@@ -6,7 +6,6 @@
  * COPYING.md in the root of the source code directory.
  *
  ****************************************************************************/
-
 #include "SendMavCommandWithHandlerTest.h"
 #include "MultiVehicleManager.h"
 #include "QGCApplication.h"

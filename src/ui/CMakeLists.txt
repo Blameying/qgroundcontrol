@@ -1,3 +1,4 @@
+add_subdirectory(custom)
 add_subdirectory(preferences)
 add_subdirectory(toolbar)
 

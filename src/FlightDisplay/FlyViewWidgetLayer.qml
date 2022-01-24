@@ -29,6 +29,7 @@ import QGroundControl.FlightMap     1.0
 import QGroundControl.Palette       1.0
 import QGroundControl.ScreenTools   1.0
 import QGroundControl.Vehicle       1.0
+import QGroundControl.Custom        1.0
 
 // This is the ui overlay layer for the widgets/tools for Fly View
 Item {
@@ -189,6 +190,7 @@ Item {
         property bool _virtualJoystickEnabled: QGroundControl.settingsManager.appSettings.virtualJoystick.rawValue
     }
 
+    //-- 初始界面左侧菜单
     FlyViewToolStrip {
         id:                     toolStrip
         anchors.leftMargin:     _toolsMargin + parentToolInsets.leftEdgeCenterInset
@@ -202,6 +204,12 @@ Item {
         onDisplayPreFlightChecklist: mainWindow.showPopupDialogFromComponent(preFlightChecklistPopup)
 
         property real leftInset: x + width
+    }
+
+    FloatDialogList {
+        id: floatlist
+        x: parent.width - width - ScreenTools.defaultFontPixelWidth * 3
+        y: parent.height - height - ScreenTools.defaultFontPixelWidth * 3
     }
 
     FlyViewAirspaceIndicator {

@@ -1,0 +1,11 @@
+add_custom_target(UiCustomQml
+	SOURCES
+		HideableMenu.qml
+        FloatDialogList.qml
+        CameraWindow.qml
+        FloatMenu.qml
+        SideMenuSubPages/subPageCamera.qml
+        SideMenuSubPages/subPageParameter.qml
+        SideMenuSubPages/subPageSailInfo.qml
+        SideMenuSubPages/subPageSystemSetting.qml
+)

@@ -1,0 +1,10 @@
+Module QGroundControl.Custom
+
+HideableMenu         1.0 HideableMenu.qml
+FloatDialogList      1.0 FloatDialogList.qml
+FloatMenu            1.0 FloatMenu.qml
+CameraWindow         1.0 CameraWindow.qml
+subPageCamera        1.0 subPageCamera.qml
+subPageParameter     1.0 subPageParameter.qml
+subPageSailInfo      1.0 subPageSailInfo.qml
+subPageSystemSetting 1.0 subPageSystemSetting.qml

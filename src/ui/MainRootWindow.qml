@@ -19,6 +19,7 @@ import QGroundControl.Controls      1.0
 import QGroundControl.ScreenTools   1.0
 import QGroundControl.FlightDisplay 1.0
 import QGroundControl.FlightMap     1.0
+import QGroundControl.Custom        1.0
 
 /// @brief Native QML top level window
 /// All properties defined here are visible to all QML pages.
@@ -457,9 +458,29 @@ ApplicationWindow {
         }
     }
 
-    FlyView {
-        id:             flightView
-        anchors.fill:   parent
+    Rectangle {
+        id: mainPage
+        anchors.fill: parent
+        FlyView {
+            id:             flightView
+            height: parent.height
+            width: parent.width - hideablemenu.width + ScreenTools.defaultFontPixelWidth * hideablemenu.switchButtonWidth
+            x: hideablemenu.x + hideablemenu.width - ScreenTools.defaultFontPixelWidth * hideablemenu.switchButtonWidth
+            anchors.top: parent.top
+        }
+        HideableMenu {
+            id: hideablemenu
+            width: unfold? mainWindow.minimumWidth / 2 : ScreenTools.defaultFontPixelWidth * switchButtonWidth
+            height: parent.height
+            anchors.left: parent.left
+            anchors.top: parent.top
+            visible: true
+        }
+        FloatMenu {
+            id: floatMenu
+            x: parent.width * 0.8
+            y: parent.y + ScreenTools.defaultFontPixelWidth * 8
+        }
     }
 
     PlanView {

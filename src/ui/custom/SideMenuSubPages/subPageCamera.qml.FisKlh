@@ -1,0 +1,359 @@
+import QtQuick                    2.15
+import QtQuick.Controls           2.15
+import QtQuick.Layouts            1.15
+import QtQuick.Window             2.0
+
+Rectangle {
+    ScrollView {
+        id: scroll_root
+        anchors.fill: parent
+        clip: true
+        contentWidth: width
+
+        property string font_color: "#ffffff";
+        property string background_color: "#4dd2ff";
+
+        Column {
+            spacing: 10
+            anchors.fill: parent
+            Row {
+                spacing: 10
+                width: parent.width
+                Label {
+                    id: label_ip
+                    text: "IP"
+                    color: scroll_root.font_color
+                    width: parent.width * 0.3
+                    horizontalAlignment: Text.AlignHCenter
+                    padding: 8
+                    background: Rectangle {
+                        color: scroll_root.background_color
+                        radius: 5
+                    }
+                }
+                TextField {
+                    text: "192.168.1.100"
+                    height: label_ip.height
+                    width: parent.width * 0.7
+                }
+            }
+
+            Label {
+                width: parent.width
+                text: "图像处理"
+                color: scroll_root.font_color
+                horizontalAlignment: Text.AlignHCenter
+                padding: 8
+                background: Rectangle {
+                    color: scroll_root.background_color
+                    radius: 5
+                }
+            }
+
+            Row {
+                spacing: 10
+                width: parent.width
+                Label {
+                    id: label_enhance
+                    text: "图像增强"
+                    color: scroll_root.font_color
+                    width: label_ip.width
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    padding: 8
+                    background: Rectangle {
+                        color: scroll_root.background_color
+                        radius: 5
+                    }
+                }
+                Slider {
+                    width: parent.width - label_enhance.width
+                    from: 1
+                    value: 25
+                    to: 100
+                    snapMode: Slider.SnapOnRelease
+                    stepSize: 1
+                    height: label_enhance.height
+                }
+            }
+
+            Row {
+                width: parent.width
+                spacing: 10
+                Label {
+                    id: label_green
+                    text: "绿光抑制"
+                    color: scroll_root.font_color
+                    width: label_enhance.width
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    padding: 8
+                    background: Rectangle {
+                        color: scroll_root.background_color
+                        radius: 5
+                    }
+                }
+                Slider {
+                    width: parent.width - label_enhance.width
+                    from: 1
+                    value: 25
+                    to: 100
+                    snapMode: Slider.SnapOnRelease
+                    stepSize: 1
+                    height: label_green.height
+                }
+            }
+
+            Label {
+                width: parent.width
+                text: "字幕"
+                color: scroll_root.font_color
+                horizontalAlignment: Text.AlignHCenter
+                padding: 8
+                background: Rectangle {
+                    color: scroll_root.background_color
+                    radius: 5
+                }
+            }
+
+            Row {
+                spacing: 10
+                width: parent.width
+                Label {
+                    id: label_depth
+                    text: "深度"
+                    color: scroll_root.font_color
+                    width: parent.width * 0.2
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    padding: 4
+                    background: Rectangle {
+                        color: scroll_root.background_color
+                        radius: 5
+                    }
+                }
+                RadioButton {
+                   display: AbstractButton.IconOnly
+                   checked: true
+                   width: parent.width * 0.1
+                   height: label_depth.height
+                }
+
+                Text {
+                    text: "X:"
+                    height: label_depth.height
+                }
+
+                TextField {
+                    width: parent.width * 0.2
+                    height: label_depth.height
+                }
+
+                Text {
+                    text: "Y:"
+                    height: label_depth.height
+                }
+
+                TextField {
+                    width: parent.width * 0.2
+                    height: label_depth.height
+                }
+            }
+
+            Row {
+                spacing: 10
+                width: parent.width
+                Label {
+                    text: "温度"
+                    color: scroll_root.font_color
+                    width: parent.width * 0.2
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    padding: 4
+                    background: Rectangle {
+                        color: scroll_root.background_color
+                        radius: 5
+                    }
+                }
+                RadioButton {
+                   display: AbstractButton.IconOnly
+                   checked: true
+                   width: parent.width * 0.1
+                   height: label_depth.height
+                }
+
+                Text {
+                    text: "X:"
+                    height: label_depth.height
+                }
+
+                TextField {
+                    width: parent.width * 0.2
+                    height: label_depth.height
+                }
+
+                Text {
+                    text: "Y:"
+                    height: label_depth.height
+                }
+
+                TextField {
+                    width: parent.width * 0.2
+                    height: label_depth.height
+                }
+            }
+
+            Rectangle {
+                width: parent.width
+                height: 20
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            ListModel {
+                id: config_list
+                ListElement {
+                    name: "自定义1"
+                    x: -1
+                    y: -1
+                    text: ""
+                    active: false
+                }
+                ListElement {
+                    name: "自定义2"
+                    x: -1
+                    y: -1
+                    text: ""
+                    active: false
+                }
+            }
+
+            Row {
+                width: parent.width
+                height: 20
+                spacing: 10
+                Rectangle {
+                    width: parent.width * 0.8
+                    height: parent.height
+                }
+                Button {
+                    text: "+"
+                    width: parent.width * 0.2
+                    height: parent.height
+                    onClicked: {
+                        config_list.append(
+                            {"name": "自定义" + config_list.count,
+                             "x": -1,
+                             "y": -1,
+                             "text": "",
+                             "active": false})
+                    }
+                }
+            }
+
+            Rectangle {
+                width: parent.width
+                height: 20
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            ListView {
+                id: customed_subtitles
+                anchors.horizontalCenter: parent.horizontalCenter
+                boundsBehavior: Flickable.StopAtBounds
+                width: parent.width
+                height: config_list.count * label_depth.height * 3
+
+                Component {
+                    id: subtitles_model
+                    Rectangle {
+                        width: parent.width
+                        height: label_depth.height * 3
+                        Rectangle {
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            height: parent.height
+                            width: parent.width
+                            Label {
+                                id: customed_name
+                                text: name
+                                color: scroll_root.font_color
+                                width: parent.width * 0.2
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                                padding: 4
+                                background: Rectangle {
+                                    color: scroll_root.background_color
+                                    radius: 5
+                                }
+                            }
+                            RadioButton {
+                                id: check_button
+                                anchors.left: customed_name.right
+                                anchors.top: customed_name.top
+                                display: AbstractButton.IconOnly
+                                checked: active
+                                width: parent.width * 0.1
+                                height: label_depth.height
+                            }
+
+                            Text {
+                                id: text_x
+                                anchors.left: check_button.right
+                                anchors.top: customed_name.top
+                                text: "X:"
+                                height: label_depth.height
+                            }
+
+                            TextField {
+                                id: text_field_x
+                                anchors.left: text_x.right
+                                anchors.top: customed_name.top
+                                width: parent.width * 0.2
+                                text: x >= 0? x: ""
+                                height: label_depth.height
+                            }
+
+                            Text {
+                                id: text_y
+                                anchors.left: text_field_x.right
+                                anchors.top: customed_name.top
+                                text: "Y:"
+                                height: label_depth.height
+                            }
+
+                            TextField {
+                                id: text_field_y
+                                anchors.left: text_y.right
+                                anchors.top: customed_name.top
+                                width: parent.width * 0.2
+                                text: y >= 0? y:""
+                                height: label_depth.height
+                            }
+
+                            Button {
+                                anchors.left: text_field_y.right
+                                anchors.top: customed_name.top
+                                text: "-"
+                                height: label_depth.height
+                                onClicked: {
+                                    config_list.remove(index)
+                                }
+                            }
+                        }
+                        TextArea {
+                            anchors.bottom: parent.bottom
+                            anchors.left: parent.left
+                            text: text
+                            width: parent.width
+                            height: label_depth.height * 2
+                        }
+                    }
+                }
+                delegate: subtitles_model
+                model: config_list
+            }
+        }
+    }
+}

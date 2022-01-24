@@ -51,6 +51,10 @@ WindowsBuild {
     CONFIG += resources_big
 }
 
+win32-msvc {
+    QMAKE_CXXFLAGS += /Wv:18
+}
+
 #
 # Branding
 #
@@ -741,6 +745,7 @@ WindowsBuild {
     HEADERS += src/stable_headers.h
     CONFIG -= silent
     OTHER_FILES += .appveyor.yml
+    QMAKE_CXXFLAGS += /Wv:18
 }
 
 contains(DEFINES, QGC_ENABLE_BLUETOOTH) {
@@ -1436,3 +1441,4 @@ contains (CONFIG, QGC_DISABLE_INSTALLER_SETUP) {
 
 DISTFILES += \
     src/QmlControls/QGroundControl/Specific/qmldir
+
