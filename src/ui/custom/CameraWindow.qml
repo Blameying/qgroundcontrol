@@ -18,13 +18,15 @@ Window {
     flags: Qt.Window
     modality: Qt.NonModal
 
+    property string source: "";
+
     Rectangle {
         anchors.fill: parent
         color: Qt.rgba(0, 0, 0, 1)
 
-        QGCLabel {
-            text: "hello"
-            anchors.centerIn: parent
+        Loader {
+            anchors.fill: parent
+            source: root.source
         }
     }
 }
