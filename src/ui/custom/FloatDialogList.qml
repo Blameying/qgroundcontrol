@@ -20,26 +20,32 @@ Rectangle {
         ListElement{
             name: "Home";
             icon: "/InstrumentValueIcons/camera.svg";
+            src: "VideoPlayer.qml";
         }
         ListElement{
             name: "Profile";
             icon: "/res/radar.svg";
+            src: "SonarMonitor.qml";
         }
         ListElement{
             name: "Message";
             icon: "/res/radar.svg";
+            src: "SonarMonitor.qml";
         }
         ListElement{
             name: "Help";
             icon: "/res/radar.svg";
+            src: "SonarMonitor.qml";
         }
         ListElement{
             name: "Setting";
             icon: "/res/radar.svg";
+            src: "SonarMonitor.qml";
         }
         ListElement{
             name: "Sign Out";
             icon: "/res/radar.svg";
+            src: "SonarMonitor.qml";
         }
     }
 
@@ -114,7 +120,7 @@ Rectangle {
                     width: 500
                     height: 300
                     visible: false
-                    source: "VideoPlayer.qml"
+                    source: src
                 }
             }
             Rectangle{

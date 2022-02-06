@@ -3,27 +3,23 @@ import QtQuick                    2.15
 import QtQuick.Controls           2.15
 import QtQuick.Layouts            1.15
 import QtQuick.Window             2.0
-import QtMultimedia               5.15
 
 import QGroundControl.ScreenTools  1.0
-import VlcPlayer 1.1
-import Vlc 1.1
-import VlcVideoOutput 1.1
+import QtAV 1.4
 
 
 Rectangle {
-    VlcVideoOutput {
-        anchors.fill: parent
-        source: VlcPlayer {
-            id: videoPlayer
-            url: "rtsp://localhost:8554/"
-        }
+    Video {
+        id: video
+        autoPlay: false
+        anchors.fill:parent
+        source: "rtsp://localhost:8554/"
     }
-
     MouseArea {
-        anchors.fill: videoPlayer
+        anchors.fill: parent
         onClicked: {
-            console.log("Blame: ", videoPlayer.status)
+            console.log("video, ", video.status);
+            video.play();
         }
     }
 }

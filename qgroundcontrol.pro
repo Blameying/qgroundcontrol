@@ -223,7 +223,8 @@ LinuxBuild {
 
 CONFIG += qt \
     thread \
-    c++11
+    c++11 \
+    KDDockWidgets
 
 DebugBuild {
     CONFIG -= qtquickcompiler
@@ -255,7 +256,9 @@ QT += \
     widgets \
     xml \
     texttospeech \
-    core-private
+    core-private \
+    av  \
+    KDDockWidgets
 
 # Multimedia only used if QVC is enabled
 !contains (DEFINES, QGC_DISABLE_UVC) {
@@ -1441,4 +1444,3 @@ contains (CONFIG, QGC_DISABLE_INSTALLER_SETUP) {
 
 DISTFILES += \
     src/QmlControls/QGroundControl/Specific/qmldir
-

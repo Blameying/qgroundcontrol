@@ -21,6 +21,8 @@ import QGroundControl.FlightDisplay 1.0
 import QGroundControl.FlightMap     1.0
 import QGroundControl.Custom        1.0
 
+import com.kdab.dockwidgets 1.0 as KDDW
+
 /// @brief Native QML top level window
 /// All properties defined here are visible to all QML pages.
 ApplicationWindow {
@@ -461,6 +463,7 @@ ApplicationWindow {
     Rectangle {
         id: mainPage
         anchors.fill: parent
+
         FlyView {
             id:             flightView
             height: parent.height
@@ -468,6 +471,12 @@ ApplicationWindow {
             x: hideablemenu.x + hideablemenu.width - ScreenTools.defaultFontPixelWidth * hideablemenu.switchButtonWidth
             anchors.top: parent.top
         }
+        FloatMenu {
+            id: floatMenu
+            x: parent.width * 0.8
+            y: parent.y + ScreenTools.defaultFontPixelWidth * 8
+        }
+
         HideableMenu {
             id: hideablemenu
             width: unfold? mainWindow.minimumWidth / 2 : ScreenTools.defaultFontPixelWidth * switchButtonWidth
@@ -476,11 +485,7 @@ ApplicationWindow {
             anchors.top: parent.top
             visible: true
         }
-        FloatMenu {
-            id: floatMenu
-            x: parent.width * 0.8
-            y: parent.y + ScreenTools.defaultFontPixelWidth * 8
-        }
+
     }
 
     PlanView {

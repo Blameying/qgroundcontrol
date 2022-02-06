@@ -30,6 +30,7 @@
 #include <QQuickImageProvider>
 #include <QQuickStyle>
 
+
 #ifdef QGC_ENABLE_BLUETOOTH
 #include <QBluetoothLocalDevice>
 #endif

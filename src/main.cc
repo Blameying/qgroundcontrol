@@ -363,7 +363,6 @@ int main(int argc, char *argv[])
     // while we only have the main thread. That should prevent it from hitting the race condition later
     // on in the code.
     qRegisterMetaType<QList<QPair<QByteArray,QByteArray> > >();
-
     app->_initCommon();
     //-- Initialize Cache System
     getQGCMapEngine()->init();

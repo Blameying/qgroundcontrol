@@ -5,6 +5,7 @@ add_custom_target(UiCustomQml
         CameraWindow.qml
         FloatMenu.qml
         VideoPlayer.qml
+        SonarMonitor.qml
         SideMenuSubPages/subPageCamera.qml
         SideMenuSubPages/subPageParameter.qml
         SideMenuSubPages/subPageSailInfo.qml

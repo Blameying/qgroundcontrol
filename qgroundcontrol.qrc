@@ -264,6 +264,7 @@
         <file alias="QGroundControl/Custom/FloatMenu.qml">src/ui/custom/FloatMenu.qml</file>
         <file alias="QGroundControl/Custom/CameraWindow.qml">src/ui/custom/CameraWindow.qml</file>
         <file alias="QGroundControl/Custom/VideoPlayer.qml">src/ui/custom/VideoPlayer.qml</file>
+        <file alias="QGroundControl/Custom/SonarMonitor.qml">src/ui/custom/SonarMonitor.qml</file>
         <file alias="QGroundControl/Custom/subPageCamera.qml">src/ui/custom/SideMenuSubPages/subPageCamera.qml</file>
         <file alias="QGroundControl/Custom/subPageParameter.qml">src/ui/custom/SideMenuSubPages/subPageParameter.qml</file>
         <file alias="QGroundControl/Custom/subPageSailInfo.qml">src/ui/custom/SideMenuSubPages/subPageSailInfo.qml</file>
