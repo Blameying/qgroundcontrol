@@ -55,6 +55,14 @@
         <file alias="add_dark.svg">resources/add_dark.svg</file>
         <file alias="arrow_right.svg">resources/arrow_right.svg</file>
         <file alias="rubbish.svg">resources/rubbish.svg</file>
+        <file alias="close-gray.svg">resources/close-gray.svg</file>
+        <file alias="close-red.svg">resources/close-red.svg</file>
+        <file alias="fixed-blue.svg">resources/fixed-blue.svg</file>
+        <file alias="fixed.svg">resources/fixed.svg</file>
+        <file alias="switch-green.svg">resources/switch-green.svg</file>
+        <file alias="switch.svg">resources/switch.svg</file>
+        <file alias="maximum.svg">resources/maximum.svg</file>
+        <file alias="maximum-pink.svg">resources/maximum-pink.svg</file>
         <file alias="SplashScreen">resources/SplashScreen.png</file>
         <file alias="Stop">resources/Stop.svg</file>
         <file alias="takeoff.svg">resources/takeoff.svg</file>

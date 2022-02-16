@@ -95,8 +95,8 @@ Item {
 
             Connections {
                 target:          debugMessageModel
-                onWriteStarted:  writeButton.enabled = false;
-                onWriteFinished: writeButton.enabled = true;
+                function onWriteStarted() {writeButton.enabled = false;}
+                function onWriteFinished() {writeButton.enabled = true;}
             }
 
             QGCButton {

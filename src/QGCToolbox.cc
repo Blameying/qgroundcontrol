@@ -25,6 +25,7 @@
 #include "FollowMe.h"
 #include "PositionManager.h"
 #include "VideoManager.h"
+#include "CustomedVideoManager.h"
 #include "MAVLinkLogManager.h"
 #include "QGCCorePlugin.h"
 #include "QGCOptions.h"
@@ -73,6 +74,7 @@ QGCToolbox::QGCToolbox(QGCApplication* app)
     _qgcPositionManager     = new QGCPositionManager        (app, this);
     _followMe               = new FollowMe                  (app, this);
     _videoManager           = new VideoManager              (app, this);
+    _customedVideoManager   = new CustomedVideoManager      (app, this);
     _mavlinkLogManager      = new MAVLinkLogManager         (app, this);
     _adsbVehicleManager     = new ADSBVehicleManager        (app, this);
 #if defined(QGC_ENABLE_PAIRING)
@@ -117,6 +119,7 @@ void QGCToolbox::setChildToolboxes(void)
     _followMe->setToolbox(this);
     _qgcPositionManager->setToolbox(this);
     _videoManager->setToolbox(this);
+    _customedVideoManager->setToolbox(this);
     _mavlinkLogManager->setToolbox(this);
     _airspaceManager->setToolbox(this);
     _adsbVehicleManager->setToolbox(this);

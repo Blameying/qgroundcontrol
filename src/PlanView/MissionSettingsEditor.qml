@@ -95,7 +95,7 @@ Rectangle {
 
             Connections {
                 target:                         _controllerVehicle
-                onSupportsTerrainFrameChanged:  altModeCombo.buildEnumStrings()
+                function onSupportsTerrainFrameChanged()  {altModeCombo.buildEnumStrings()}
             }
         }
         QGCLabel {

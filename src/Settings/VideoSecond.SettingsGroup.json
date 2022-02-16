@@ -5,15 +5,15 @@
 [
 {
     "name":             "videoSource",
-    "shortDesc": "Video source",
+    "shortDesc": "Video 2 source",
     "longDesc":  "Source for video. UDP, TCP, RTSP and UVC Cameras may be supported depending on Vehicle and ground station version.",
     "type":             "string",
     "default":     ""
 },
 {
     "name":             "udpPort",
-    "shortDesc": "Video UDP Port",
-    "longDesc":  "UDP port to bind to for video stream.",
+    "shortDesc": "Video 2 UDP Port",
+    "longDesc":  "UDP 2 port to bind to for video stream.",
     "type":             "uint16",
     "min":              1025,
     "default":     5600

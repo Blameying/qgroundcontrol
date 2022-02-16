@@ -28,11 +28,6 @@
 #include <QtQml>
 #include <QQmlEngine>
 
-#include <kddockwidgets/Config.h>
-#include <kddockwidgets/DockWidgetQuick.h>
-#include <kddockwidgets/private/DockRegistry_p.h>
-#include <kddockwidgets/FrameworkWidgetFactory.h>
-
 /// @file
 ///     @brief Core Plugin Interface for QGroundControl - Default Implementation
 ///     @author Gus Grubba <gus@auterion.com>
@@ -376,14 +371,9 @@ QQmlApplicationEngine* QGCCorePlugin::createQmlApplicationEngine(QObject* parent
 {
     QQmlApplicationEngine* qmlEngine = new QQmlApplicationEngine(parent);
 
-    auto &config = KDDockWidgets::Config::self();
-    auto flags = config.flags();
-    config.setFlags(flags);
-
     qmlEngine->addImportPath("qrc:/qml");
     qmlEngine->rootContext()->setContextProperty("joystickManager", qgcApp()->toolbox()->joystickManager());
     qmlEngine->rootContext()->setContextProperty("debugMessageModel", AppMessages::getModel());
-    KDDockWidgets::Config::self().setQmlEngine(qmlEngine);
     return qmlEngine;
 }
 

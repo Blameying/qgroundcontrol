@@ -197,6 +197,7 @@
         <file alias="QGroundControl/FactControls/FactValueSlider.qml">src/FactSystem/FactControls/FactValueSlider.qml</file>
         <file alias="QGroundControl/FactControls/qmldir">src/QmlControls/QGroundControl/FactControls/qmldir</file>
         <file alias="QGroundControl/FlightDisplay/FlightDisplayViewVideo.qml">src/FlightDisplay/FlightDisplayViewVideo.qml</file>
+        <file alias="QGroundControl/FlightDisplay/FlightDisplayViewVideoSecond.qml">src/FlightDisplay/FlightDisplayViewVideoSecond.qml</file>
         <file alias="QGroundControl/FlightDisplay/FlightDisplayViewWidgets.qml">src/FlightDisplay/FlightDisplayViewWidgets.qml</file>
         <file alias="QGroundControl/FlightDisplay/FlyViewAirspaceIndicator.qml">src/FlightDisplay/FlyViewAirspaceIndicator.qml</file>
         <file alias="QGroundControl/FlightDisplay/FlyView.qml">src/FlightDisplay/FlyView.qml</file>
@@ -262,7 +263,8 @@
         <file alias="QGroundControl/Custom/HideableMenu.qml">src/ui/custom/HideableMenu.qml</file>
         <file alias="QGroundControl/Custom/FloatDialogList.qml">src/ui/custom/FloatDialogList.qml</file>
         <file alias="QGroundControl/Custom/FloatMenu.qml">src/ui/custom/FloatMenu.qml</file>
-        <file alias="QGroundControl/Custom/CameraWindow.qml">src/ui/custom/CameraWindow.qml</file>
+        <file alias="QGroundControl/Custom/DialogWindow.qml">src/ui/custom/DialogWindow.qml</file>
+        <file alias="QGroundControl/Custom/SwitchContainer.qml">src/ui/custom/SwitchContainer.qml</file>
         <file alias="QGroundControl/Custom/VideoPlayer.qml">src/ui/custom/VideoPlayer.qml</file>
         <file alias="QGroundControl/Custom/SonarMonitor.qml">src/ui/custom/SonarMonitor.qml</file>
         <file alias="QGroundControl/Custom/subPageCamera.qml">src/ui/custom/SideMenuSubPages/subPageCamera.qml</file>
@@ -341,6 +343,7 @@
         <file alias="Vehicle/VibrationFact.json">src/Vehicle/VibrationFact.json</file>
         <file alias="Vehicle/WindFact.json">src/Vehicle/WindFact.json</file>
         <file alias="Video.SettingsGroup.json">src/Settings/Video.SettingsGroup.json</file>
+        <file alias="VideoSecond.SettingsGroup.json">src/Settings/VideoSecond.SettingsGroup.json</file>
         <file alias="VTOLLandingPattern.FactMetaData.json">src/MissionManager/VTOLLandingPattern.FactMetaData.json</file>
     </qresource>
     <qresource prefix="/MockLink">

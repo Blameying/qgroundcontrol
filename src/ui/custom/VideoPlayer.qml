@@ -5,21 +5,16 @@ import QtQuick.Layouts            1.15
 import QtQuick.Window             2.0
 
 import QGroundControl.ScreenTools  1.0
-import QtAV 1.4
+import QtAV 1.7
 
 
 Rectangle {
-    Video {
-        id: video
-        autoPlay: false
-        anchors.fill:parent
-        source: "rtsp://localhost:8554/"
-    }
+    anchors.fill: parent
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            console.log("video, ", video.status);
-            video.play();
+            console.log("video, ", player.status);
+            my_capture.capture();
         }
     }
 }

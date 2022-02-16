@@ -72,6 +72,7 @@
 #include "FlightPathSegment.h"
 #include "PlanMasterController.h"
 #include "VideoManager.h"
+#include "CustomedVideoManager.h"
 #include "VideoReceiver.h"
 #include "LogDownloadController.h"
 #if defined(QGC_ENABLE_MAVLINK_INSPECTOR)
@@ -147,6 +148,7 @@ public:
   {}
 
   void run () {
+      qDebug() << "Blame, I get here";
       _manager->_initVideo();
   }
 
@@ -625,6 +627,8 @@ bool QGCApplication::_initForNormalAppBoot()
 
     if (rootWindow) {
         rootWindow->scheduleRenderJob (new FinishVideoInitialization (toolbox()->videoManager()),
+                QQuickWindow::BeforeSynchronizingStage);
+        rootWindow->scheduleRenderJob (new FinishVideoInitialization ((VideoManager*)toolbox()->customedVideoManager()),
                 QQuickWindow::BeforeSynchronizingStage);
     }
 

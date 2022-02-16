@@ -206,11 +206,6 @@ Item {
         property real leftInset: x + width
     }
 
-    FloatDialogList {
-        id: floatlist
-        x: parent.width - width - ScreenTools.defaultFontPixelWidth * 3
-        y: parent.height - height - ScreenTools.defaultFontPixelWidth * 3
-    }
 
     FlyViewAirspaceIndicator {
         anchors.top:                parent.top

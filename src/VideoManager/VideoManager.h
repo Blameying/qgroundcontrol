@@ -103,13 +103,13 @@ public:
     // Override from QGCTool
     virtual void        setToolbox          (QGCToolbox *toolbox);
 
-    Q_INVOKABLE void startVideo     ();
-    Q_INVOKABLE void stopVideo      ();
-
-    Q_INVOKABLE void startRecording (const QString& videoFile = QString());
-    Q_INVOKABLE void stopRecording  ();
-
-    Q_INVOKABLE void grabImage(const QString& imageFile = QString());
+    Q_INVOKABLE virtual void startVideo     ();
+    Q_INVOKABLE virtual void stopVideo      ();
+                
+    Q_INVOKABLE virtual void startRecording (const QString& videoFile = QString());
+    Q_INVOKABLE virtual void stopRecording  ();
+                
+    Q_INVOKABLE virtual void grabImage(const QString& imageFile = QString());
 
 signals:
     void hasVideoChanged            ();
@@ -141,14 +141,14 @@ protected slots:
 protected:
     friend class FinishVideoInitialization;
 
-    void _initVideo                 ();
-    bool _updateSettings            (unsigned id);
-    bool _updateVideoUri            (unsigned id, const QString& uri);
-    void _cleanupOldVideos          ();
-    void _restartAllVideos          ();
-    void _restartVideo              (unsigned id);
-    void _startReceiver             (unsigned id);
-    void _stopReceiver              (unsigned id);
+    virtual void _initVideo                 ();
+    virtual bool _updateSettings            (unsigned id);
+    virtual bool _updateVideoUri            (unsigned id, const QString& uri);
+    virtual void _cleanupOldVideos          ();
+    virtual void _restartAllVideos          ();
+    virtual void _restartVideo              (unsigned id);
+    virtual void _startReceiver             (unsigned id);
+    virtual void _stopReceiver              (unsigned id);
 
 protected:
     QString                 _videoFile;

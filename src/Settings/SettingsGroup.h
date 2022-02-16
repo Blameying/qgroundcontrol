@@ -46,7 +46,7 @@
     SettingsFact* _ ## NAME ## Fact = nullptr; \
     public: \
     Q_PROPERTY(Fact* NAME READ NAME CONSTANT) \
-    Fact* NAME(); \
+    virtual Fact* NAME(); \
     static const char* NAME ## Name;
 
 /// Provides access to group of settings. The group is named and has a visible property associated with which can control whether the group

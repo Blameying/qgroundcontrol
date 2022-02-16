@@ -18,6 +18,7 @@ class VideoSettings : public SettingsGroup
 
 public:
     VideoSettings(QObject* parent = nullptr);
+    VideoSettings(const QString& name, const QString& settingsGroup, QObject* parent);
     DEFINE_SETTING_NAME_GROUP()
 
     DEFINE_SETTINGFACT(videoSource)
@@ -76,7 +77,7 @@ public:
 signals:
     void streamConfiguredChanged    (bool configured);
 
-private slots:
+protected slots:
     void _configChanged             (QVariant value);
 
 private:

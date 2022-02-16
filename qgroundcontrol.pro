@@ -223,8 +223,7 @@ LinuxBuild {
 
 CONFIG += qt \
     thread \
-    c++11 \
-    KDDockWidgets
+    c++11
 
 DebugBuild {
     CONFIG -= qtquickcompiler
@@ -256,9 +255,7 @@ QT += \
     widgets \
     xml \
     texttospeech \
-    core-private \
-    av  \
-    KDDockWidgets
+    core-private
 
 # Multimedia only used if QVC is enabled
 !contains (DEFINES, QGC_DISABLE_UVC) {
@@ -680,6 +677,7 @@ HEADERS += \
     src/Settings/SettingsManager.h \
     src/Settings/UnitsSettings.h \
     src/Settings/VideoSettings.h \
+    src/Settings/VideoSecondSettings.h \
     src/ShapeFileHelper.h \
     src/SHPFileHelper.h \
     src/Terrain/TerrainQuery.h \
@@ -910,6 +908,7 @@ SOURCES += \
     src/Settings/SettingsManager.cc \
     src/Settings/UnitsSettings.cc \
     src/Settings/VideoSettings.cc \
+    src/Settings/VideoSecondSettings.cc \
     src/ShapeFileHelper.cc \
     src/SHPFileHelper.cc \
     src/Terrain/TerrainQuery.cc \
@@ -1375,11 +1374,13 @@ INCLUDEPATH += \
 
 HEADERS += \
     src/VideoManager/SubtitleWriter.h \
-    src/VideoManager/VideoManager.h
+    src/VideoManager/VideoManager.h \
+    src/VideoManager/CustomedVideoManager.h
 
 SOURCES += \
     src/VideoManager/SubtitleWriter.cc \
-    src/VideoManager/VideoManager.cc
+    src/VideoManager/VideoManager.cc    \
+    src/VideoManager/CustomedVideoManager.cc
 
 contains (CONFIG, DISABLE_VIDEOSTREAMING) {
     message("Skipping support for video streaming (manual override from command line)")

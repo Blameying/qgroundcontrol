@@ -3,7 +3,8 @@ Module QGroundControl.Custom
 HideableMenu         1.0 HideableMenu.qml
 FloatDialogList      1.0 FloatDialogList.qml
 FloatMenu            1.0 FloatMenu.qml
-CameraWindow         1.0 CameraWindow.qml
+DialogWindow         1.0 DialogWindow.qml
+SwitchContainer      1.0 SwitchContainer.qml
 VideoPlayer          1.0 VideoPlayer.qml
 SonarMonitor         1.0 SonarMonitor.qml
 subPageCamera        1.0 subPageCamera.qml

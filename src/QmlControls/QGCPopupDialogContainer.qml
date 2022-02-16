@@ -158,7 +158,7 @@ Popup {
 
     Connections {
         target:         dialogComponentLoader.item
-        onHideDialog:   close()
+        function onHideDialog()   {close()}
     }
 
     Rectangle {

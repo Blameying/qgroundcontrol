@@ -8,7 +8,7 @@
  ****************************************************************************/
 
 import QtQuick          2.11
-import QtQuick.Controls 2.4
+import QtQuick.Controls 2.15
 import QtQuick.Dialogs  1.3
 import QtQuick.Layouts  1.11
 import QtQuick.Window   2.11
@@ -20,8 +20,6 @@ import QGroundControl.ScreenTools   1.0
 import QGroundControl.FlightDisplay 1.0
 import QGroundControl.FlightMap     1.0
 import QGroundControl.Custom        1.0
-
-import com.kdab.dockwidgets 1.0 as KDDW
 
 /// @brief Native QML top level window
 /// All properties defined here are visible to all QML pages.
@@ -246,6 +244,7 @@ ApplicationWindow {
         firstRunPromptManager.clearNextPromptSignal()
         QGroundControl.linkManager.shutdown()
         QGroundControl.videoManager.stopVideo();
+        QGroundControl.customedVideoManager.stopVideo();
         mainWindow.close()
     }
 
@@ -464,17 +463,98 @@ ApplicationWindow {
         id: mainPage
         anchors.fill: parent
 
-        FlyView {
-            id:             flightView
+        SplitView {
+            id: splitedView
             height: parent.height
             width: parent.width - hideablemenu.width + ScreenTools.defaultFontPixelWidth * hideablemenu.switchButtonWidth
             x: hideablemenu.x + hideablemenu.width - ScreenTools.defaultFontPixelWidth * hideablemenu.switchButtonWidth
             anchors.top: parent.top
+
+            Rectangle {
+                id: motherContainer
+                height: parent.height
+                SplitView.minimumWidth: parent.width * 0.5
+                SplitView.maximumWidth: parent.width
+                SplitView.preferredWidth: parent.width * 0.8
+
+                FlyView {
+                    id: flightView
+                    anchors.fill: parent
+                }
+            }
+
+            ScrollView {
+                id: scorllContainer
+                height: parent.height
+                contentWidth: width
+                clip: true
+                visible: false
+
+                SplitView {
+                    id: sideBar
+                    anchors.fill: parent
+                    orientation: Qt.Vertical
+
+                    property var parentList: 0
+
+                    Rectangle {
+                        width: parent.width
+                        SplitView.minimumHeight: parent.height / 6
+                        SplitView.maximumHeight: parent.height
+                        visible: false
+                    }
+                    Rectangle {
+                        width: parent.width
+                        SplitView.minimumHeight: parent.height / 6
+                        SplitView.maximumHeight: parent.height
+                        visible: false
+                    }
+                    Rectangle {
+                        width: parent.width
+                        SplitView.minimumHeight: parent.height / 6
+                        SplitView.maximumHeight: parent.height
+                        visible: false
+                    }
+                    Rectangle {
+                        width: parent.width
+                        SplitView.minimumHeight: parent.height / 6
+                        SplitView.maximumHeight: parent.height
+                        visible: false
+                    }
+                    Rectangle {
+                        width: parent.width
+                        SplitView.minimumHeight: parent.height / 6
+                        SplitView.maximumHeight: parent.height
+                        visible: false
+                    }
+                    Rectangle {
+                        width: parent.width
+                        SplitView.minimumHeight: parent.height / 6
+                        SplitView.maximumHeight: parent.height
+                        visible: false
+                    }
+
+                    onParentListChanged: {
+                        if (parentList > 0) {
+                            scorllContainer.visible = true;
+                        } else {
+                            scorllContainer.visible = false;
+                        }
+                        console.log("Blame, parentList: ", parentList);
+                    }
+                }
+            }
         }
-        FloatMenu {
-            id: floatMenu
-            x: parent.width * 0.8
-            y: parent.y + ScreenTools.defaultFontPixelWidth * 8
+
+
+        FloatDialogList {
+            id: floatDialogList
+            anchors.right: parent.right
+            anchors.bottomMargin: ScreenTools.defaultFontPixelHeight * 3
+            anchors.bottom: parent.bottom
+
+            targetParent: sideBar
+            mother: motherContainer
         }
 
         HideableMenu {
@@ -580,7 +660,7 @@ ApplicationWindow {
             Connections {
                 target:                 toolDrawerLoader.item
                 ignoreUnknownSignals:   true
-                onPopout:               toolDrawer.visible = false
+                function onPopout()     {toolDrawer.visible = false}
             }
         }
     }

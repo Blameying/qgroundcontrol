@@ -23,7 +23,6 @@ SettingsGroup::SettingsGroup(const QString& name, const QString& settingsGroup, 
     , _settingsGroup(settingsGroup)
 {
     QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
-
     _nameToMetaDataMap = FactMetaData::createMapFromJsonFile(QString(kJsonFile).arg(name), this);
 }
 

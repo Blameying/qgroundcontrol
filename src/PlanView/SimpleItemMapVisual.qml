@@ -85,8 +85,8 @@ Item {
     Connections {
         target: _missionItem
 
-        onIsCurrentItemChanged:         updateDragArea()
-        onSpecifiesCoordinateChanged:   updateDragArea()
+        function onIsCurrentItemChanged()         {updateDragArea()}
+        function onSpecifiesCoordinateChanged()   {updateDragArea()}
     }
 
     // Control which is used to drag items

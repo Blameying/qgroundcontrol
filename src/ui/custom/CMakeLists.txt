@@ -2,7 +2,8 @@ add_custom_target(UiCustomQml
 	SOURCES
 		HideableMenu.qml
         FloatDialogList.qml
-        CameraWindow.qml
+        DialogWindow.qml
+        SwitchContainer.qml
         FloatMenu.qml
         VideoPlayer.qml
         SonarMonitor.qml

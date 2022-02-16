@@ -51,6 +51,7 @@ void QGroundControlQmlGlobal::setToolbox(QGCToolbox* toolbox)
     _qgcPositionManager     = toolbox->qgcPositionManager();
     _missionCommandTree     = toolbox->missionCommandTree();
     _videoManager           = toolbox->videoManager();
+    _customedVideoManager   = (VideoManager*)toolbox->customedVideoManager();
     _mavlinkLogManager      = toolbox->mavlinkLogManager();
     _corePlugin             = toolbox->corePlugin();
     _firmwarePluginManager  = toolbox->firmwarePluginManager();

@@ -147,6 +147,7 @@ VideoManager::setToolbox(QGCToolbox *toolbox)
 
     connect(_videoReceiver[0], &VideoReceiver::decodingChanged, this, [this](bool active){
         _decoding = active;
+        qDebug() << "VideoManager, decoding: " << _decoding;
         emit decodingChanged();
     });
 
@@ -570,12 +571,14 @@ VideoManager::_initVideo()
 #if defined(QGC_GST_STREAMING)
     QQuickItem* root = qgcApp()->mainRootWindow();
 
+    qDebug() << "Blame, original initVideo";
     if (root == nullptr) {
         qCDebug(VideoManagerLog) << "mainRootWindow() failed. No root window";
         return;
     }
 
     QQuickItem* widget = root->findChild<QQuickItem*>("videoContent");
+    qDebug() << "Blame, we found widget," << widget;
 
     if (widget != nullptr && _videoReceiver[0] != nullptr) {
         _videoSink[0] = qgcApp()->toolbox()->corePlugin()->createVideoSink(this, widget);
@@ -768,6 +771,7 @@ VideoManager::_restartAllVideos()
 void
 VideoManager::_startReceiver(unsigned id)
 {
+    qDebug() << "Blame, I shouldn't be called";
 #if defined(QGC_GST_STREAMING)
     const unsigned timeout = _videoSettings->rtspTimeout()->rawValue().toUInt();
 

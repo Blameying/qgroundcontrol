@@ -87,6 +87,65 @@ DECLARE_SETTINGGROUP(Video, "Video")
     _setDefaults();
 }
 
+VideoSettings::VideoSettings(const QString& name, const QString& settingsGroup, QObject* parent)
+    : SettingsGroup(name, settingsGroup, parent)
+{
+    qmlRegisterUncreatableType<VideoSettings>("QGroundControl.SettingsManager", 1, 0, "VideoSettings", "Reference only");
+
+    // Setup enum values for videoSource settings into meta data
+    QStringList videoSourceList;
+#ifdef QGC_GST_STREAMING
+    videoSourceList.append(videoSourceRTSP);
+#ifndef NO_UDP_VIDEO
+    videoSourceList.append(videoSourceUDPH264);
+    videoSourceList.append(videoSourceUDPH265);
+#endif
+    videoSourceList.append(videoSourceTCP);
+    videoSourceList.append(videoSourceMPEGTS);
+    videoSourceList.append(videoSource3DRSolo);
+    videoSourceList.append(videoSourceParrotDiscovery);
+#endif
+#ifndef QGC_DISABLE_UVC
+    QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
+    for (const QCameraInfo &cameraInfo: cameras) {
+        videoSourceList.append(cameraInfo.description());
+    }
+#endif
+    if (videoSourceList.count() == 0) {
+        _noVideo = true;
+        videoSourceList.append(videoSourceNoVideo);
+    } else {
+        videoSourceList.insert(0, videoDisabled);
+    }
+    QVariantList videoSourceVarList;
+    for (const QString& videoSource: videoSourceList) {
+        videoSourceVarList.append(QVariant::fromValue(videoSource));
+    }
+    _nameToMetaDataMap[videoSourceName]->setEnumInfo(videoSourceList, videoSourceVarList);
+
+    const QVariantList removeForceVideoDecodeList{
+#ifdef Q_OS_LINUX
+        VideoDecoderOptions::ForceVideoDecoderDirectX3D,
+        VideoDecoderOptions::ForceVideoDecoderVideoToolbox,
+#endif
+#ifdef Q_OS_WIN
+        VideoDecoderOptions::ForceVideoDecoderVAAPI,
+        VideoDecoderOptions::ForceVideoDecoderVideoToolbox,
+#endif
+#ifdef Q_OS_MAC
+        VideoDecoderOptions::ForceVideoDecoderDirectX3D,
+        VideoDecoderOptions::ForceVideoDecoderVAAPI,
+#endif
+    };
+
+    for(const auto& value : removeForceVideoDecodeList) {
+        _nameToMetaDataMap[forceVideoDecoderName]->removeEnumInfo(value);
+    }
+
+    // Set default value for videoSource
+    _setDefaults();
+}
+
 void VideoSettings::_setDefaults()
 {
     if (_noVideo) {
