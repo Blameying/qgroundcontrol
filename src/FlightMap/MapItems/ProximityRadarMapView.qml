@@ -48,9 +48,9 @@ MapQuickItem {
 
     Connections {
         target:             map
-        onWidthChanged:     scaleTimer.restart()
-        onHeightChanged:    scaleTimer.restart()
-        onZoomLevelChanged: scaleTimer.restart()
+        function onWidthChanged()    {scaleTimer.restart()}
+        function onHeightChanged()   {scaleTimer.restart()}
+        function onZoomLevelChanged() {scaleTimer.restart()}
     }
 
     Timer {

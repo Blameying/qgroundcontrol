@@ -771,7 +771,6 @@ VideoManager::_restartAllVideos()
 void
 VideoManager::_startReceiver(unsigned id)
 {
-    qDebug() << "Blame, I shouldn't be called";
 #if defined(QGC_GST_STREAMING)
     const unsigned timeout = _videoSettings->rtspTimeout()->rawValue().toUInt();
 

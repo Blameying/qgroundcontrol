@@ -83,5 +83,6 @@ src/latex/
 Qt*-linux*.tar.*
 
 .vs/
+.vscode/
 
 libs/airmapd/include/boost

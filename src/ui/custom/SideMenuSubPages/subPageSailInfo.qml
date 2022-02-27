@@ -5,6 +5,7 @@ import QtQuick.Layouts            1.15
 import QtQuick.Window             2.0
 import QtGraphicalEffects         1.12
 
+import QGroundControl              1.0
 import QGroundControl.ScreenTools  1.0
 
 Rectangle {
@@ -18,6 +19,26 @@ Rectangle {
         property string font_color: "#000000";
         property real common_border_width: 0.1;
 
+        property bool gpsConnected: QGroundControl.gpsRtk.connected.value
+        property var  activeVehicle: QGroundControl.multiVehicleManager.activeVehicle
+
+        function getRTKLocation() {
+            if (gpsConnected) {
+                return "经度:"+QGroundControl.gpsRtk.currentLongitude.value.toFixed(2).toString()+
+                    "\n纬度:"+QGroundControl.gpsRtk.currentLatitude.value.toFixed(2).toString();
+            } else {
+                return "未连接"
+            }
+        }
+
+        function getVehicleLocation() {
+            if (!activeVehicle) {
+                return "未连接"
+            } else {
+                console.log("Blame, ", activeVehicle.longitude)
+                return "经度:" + activeVehicle.longitude.toFixed(2).toString() + "\n纬度:" + activeVehicle.latitude.toFixed(2).toString()
+            }
+        }
         Column {
             spacing: ScreenTools.defaultFontPixelHeight
             anchors.fill: parent
@@ -48,13 +69,14 @@ Rectangle {
                         renderType: Text.NativeRendering;
                     }
                     TextArea {
-                        text: "0\n0"
+                        text: scroll_root.getRTKLocation()
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                         enabled: false
                         width: parent.width
                         height: ScreenTools.defaultFontPixelHeight * 3;
                         renderType: Text.NativeRendering
+                        color: scroll_root.gpsConnected? "":"#ff0000";
                         background: Rectangle {
                             border.color: scroll_root.font_color
                             border.width: scroll_root.common_border_width
@@ -74,13 +96,14 @@ Rectangle {
                         renderType: Text.NativeRendering;
                     }
                     TextArea {
-                        text: "0\n0"
+                        text: scroll_root.getVehicleLocation()
                         horizontalAlignment: Text.AlignHCenter;
                         verticalAlignment: Text.AlignVCenter;
                         enabled: false
                         width: parent.width
                         height: ScreenTools.defaultFontPixelHeight * 3;
                         renderType: Text.NativeRendering;
+                        color: scroll_root.activeVehicle? "":"#ff0000";
                         background: Rectangle {
                             border.color: scroll_root.font_color
                             border.width: scroll_root.common_border_width
@@ -117,11 +140,12 @@ Rectangle {
                 }
                 TextField {
                     id: rollAngle
-                    text: "0"
+                    text: scroll_root.activeVehicle? scroll_root.activeVehicle.roll.value.toFixed(2):"0"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     height: parent.item_height
                     width: label1.width - parent.item_width - parent.spacing
+                    color: scroll_root.activeVehicle? "":"#ff0000";
                     renderType: Text.NativeRendering
                     background: Rectangle {
                         border.color: scroll_root.font_color
@@ -138,11 +162,12 @@ Rectangle {
                 }
                 TextField {
                     id: pitchAngle
-                    text: "0"
+                    text: scroll_root.activeVehicle? scroll_root.activeVehicle.pitch.value.toFixed(2):"0"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     height: parent.item_height
                     width: label1.width - parent.item_width - parent.spacing
+                    color: scroll_root.activeVehicle? "":"#ff0000";
                     renderType: Text.NativeRendering
                     background: Rectangle {
                         border.color: scroll_root.font_color
@@ -159,12 +184,13 @@ Rectangle {
                 }
                 TextField {
                     id: headingAngle
-                    text: "0"
+                    text: scroll_root.activeVehicle? scroll_root.activeVehicle.heading.value.toFixed(2):"0"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     height: parent.item_height
                     width: label1.width - parent.item_width - parent.spacing
                     renderType: Text.NativeRendering
+                    color: scroll_root.activeVehicle? "":"#ff0000";
                     background: Rectangle {
                         border.color: scroll_root.font_color
                         border.width: scroll_root.common_border_width
@@ -180,11 +206,12 @@ Rectangle {
                 }
                 TextField {
                     id: depth
-                    text: "0"
+                    text: scroll_root.activeVehicle? scroll_root.activeVehicle.altitudeRelative.value.toFixed(2):"0"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     height: parent.item_height
                     width: label1.width - parent.item_width - parent.spacing
+                    color: scroll_root.activeVehicle? "":"#ff0000";
                     renderType: Text.NativeRendering
                     background: Rectangle {
                         border.color: scroll_root.font_color
@@ -370,8 +397,14 @@ Rectangle {
                 CheckBox {
                    id: connectMainControl
                    display: AbstractButton.IconOnly
-                   checked: true
+                   checked: scroll_root.activeVehicle? true:false
                    width: 15
+                   onClicked: {
+                       if (checked && scroll_root.activeVehicle) {
+                            scroll_root.activeVehicle.closeVehicle()
+                       }
+                       return false;
+                   }
                 }
 
                 Label {
@@ -403,8 +436,9 @@ Rectangle {
                     width: label1.width - connectMainControl.width
                 }
                 CheckBox {
+                   id: handle_model_checkbox
                    display: AbstractButton.IconOnly
-                   checked: true
+                   checked: !auto_model_checkbox.checked
                    width: 15
                 }
                 Label {
@@ -420,8 +454,9 @@ Rectangle {
                     width: label1.width - connectMainControl.width
                 }
                 CheckBox {
+                   id: auto_model_checkbox
                    display: AbstractButton.IconOnly
-                   checked: true
+                   checked: !handle_model_checkbox.checked
                    width: 15
                 }
             }

@@ -9,7 +9,6 @@ import QGroundControl.ScreenTools  1.0
 import QGroundControl.FactSystem            1.0
 import QGroundControl.FactControls          1.0
 import QGroundControl.SettingsManager       1.0
-import QGroundControl.Custom                1.0
 import Qt.labs.settings 1.0
 
 Rectangle {
@@ -20,7 +19,7 @@ Rectangle {
         clip: true
         contentWidth: width
 
-        property var    _videoSettings: QGroundControl.settingsManager.videoSettings;
+        property var    _videoSettings: QGroundControl.settingsManager.customedVideoSettings;
         property string font_color: "#000000";
         property string alert_color: "#ff0000";
         property string background_color: "#4dd2ff";
@@ -95,7 +94,7 @@ Rectangle {
                     }
                     Settings {
                         id: settings
-                        property alias main_camera_ip: text_ip.text;
+                        property alias second_camera_ip: text_ip.text;
                     }
                 }
                 FactTextField {
@@ -140,15 +139,16 @@ Rectangle {
                     }
                 }
                 TextSlider {
-                    id: camera_main_enhance
+                    id: camera_second_enhance
                     width: parent.width - label_enhance.width
                     from: 1
                     value: 25
                     to: 100
                     stepSize: 1
                     height: label_enhance.height
+
                     Settings {
-                        property alias image_enhance_main: camera_main_enhance.value;
+                        property alias image_enhance_second: camera_second_enhance.value;
                     }
                 }
             }
@@ -171,7 +171,7 @@ Rectangle {
                     }
                 }
                 TextSlider {
-                    id: camera_main_green
+                    id: camera_second_green
                     width: parent.width - label_enhance.width
                     from: 1
                     value: 25
@@ -179,7 +179,7 @@ Rectangle {
                     stepSize: 1
                     height: label_green.height
                     Settings {
-                        property alias image_green_main: camera_main_green.value;
+                        property alias image_green_second: camera_second_green.value;
                     }
                 }
             }

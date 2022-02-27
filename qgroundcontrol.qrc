@@ -268,9 +268,11 @@
         <file alias="QGroundControl/Custom/VideoPlayer.qml">src/ui/custom/VideoPlayer.qml</file>
         <file alias="QGroundControl/Custom/SonarMonitor.qml">src/ui/custom/SonarMonitor.qml</file>
         <file alias="QGroundControl/Custom/subPageCamera.qml">src/ui/custom/SideMenuSubPages/subPageCamera.qml</file>
+        <file alias="QGroundControl/Custom/subPageCamera_second.qml">src/ui/custom/SideMenuSubPages/subPageCamera_second.qml</file>
         <file alias="QGroundControl/Custom/subPageParameter.qml">src/ui/custom/SideMenuSubPages/subPageParameter.qml</file>
         <file alias="QGroundControl/Custom/subPageSailInfo.qml">src/ui/custom/SideMenuSubPages/subPageSailInfo.qml</file>
         <file alias="QGroundControl/Custom/subPageSystemSetting.qml">src/ui/custom/SideMenuSubPages/subPageSystemSetting.qml</file>
+        <file alias="QGroundControl/Custom/TextSlider.qml">src/ui/custom/CustomedItems/TextSlider.qml</file>
         <file alias="QmlTest.qml">src/QmlControls/QmlTest.qml</file>
         <file alias="RadioComponent.qml">src/AutoPilotPlugins/Common/RadioComponent.qml</file>
         <file alias="SerialSettings.qml">src/ui/preferences/SerialSettings.qml</file>

@@ -481,6 +481,12 @@ ApplicationWindow {
                     id: flightView
                     anchors.fill: parent
                 }
+
+                PlanView {
+                    id:             planView
+                    anchors.fill:   parent
+                    visible:        false
+                }
             }
 
             ScrollView {
@@ -568,11 +574,6 @@ ApplicationWindow {
 
     }
 
-    PlanView {
-        id:             planView
-        anchors.fill:   parent
-        visible:        false
-    }
 
     Drawer {
         id:             toolDrawer

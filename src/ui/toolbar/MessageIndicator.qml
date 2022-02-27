@@ -100,7 +100,7 @@ Item {
 
             Connections {
                 target: _activeVehicle
-                onNewFormattedMessage :{
+                function onNewFormattedMessage(formattedMessage) {
                     messageText.append(formatMessage(formattedMessage))
                     //-- Hack to scroll down
                     messageFlick.flick(0,-500)

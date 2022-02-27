@@ -62,7 +62,7 @@ Rectangle{
                 name: "副摄像";
                 icon: "/res/second_camera.svg";
                 icon_deep: "/res/second_camera_deep.svg"
-                source: "subPageCamera.qml"
+                source: "subPageCamera_second.qml"
             }
             ListElement{
                 name: "调参";

@@ -44,6 +44,8 @@
         <file alias="sail_info_deep.svg">resources/sail_info_deep.svg</file>
         <file alias="main_camera.svg">resources/main_camera.svg</file>
         <file alias="main_camera_deep.svg">resources/main_camera_deep.svg</file>
+        <file alias="wifi.svg">resources/wifi.svg</file>
+        <file alias="wifi_disconnect.svg">resources/wifi_disconnect.svg</file>
         <file alias="second_camera.svg">resources/second_camera.svg</file>
         <file alias="second_camera_deep.svg">resources/second_camera_deep.svg</file>
         <file alias="parameters.svg">resources/parameters.svg</file>

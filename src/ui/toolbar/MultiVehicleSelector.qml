@@ -34,7 +34,7 @@ QGCComboBox {
 
     Connections {
         target:         QGroundControl.multiVehicleManager.vehicles
-        onCountChanged:  _updateVehicleModel()
+        function onCountChanged() {_updateVehicleModel()}
     }
 
     Component.onCompleted:      _updateVehicleModel()

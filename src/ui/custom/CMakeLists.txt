@@ -8,7 +8,9 @@ add_custom_target(UiCustomQml
         VideoPlayer.qml
         SonarMonitor.qml
         SideMenuSubPages/subPageCamera.qml
+        SideMenuSubPages/subPageCamera_second.qml
         SideMenuSubPages/subPageParameter.qml
         SideMenuSubPages/subPageSailInfo.qml
         SideMenuSubPages/subPageSystemSetting.qml
+        CustomedItems/TextSlider.qml
 )

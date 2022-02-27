@@ -45,18 +45,6 @@ Rectangle {
         visible:        qgcPal.globalTheme === QGCPalette.Light
     }
 
-    Rectangle {
-        anchors.fill:   viewButtonRow
-        visible:        currentToolbar === flyViewToolbar
-
-        gradient: Gradient {
-            orientation: Gradient.Horizontal
-            GradientStop { position: 0;                                     color: _mainStatusBGColor }
-            GradientStop { position: currentButton.x + currentButton.width; color: _mainStatusBGColor }
-            GradientStop { position: 1;                                     color: _root.color }
-        }
-    }
-
     RowLayout {
         id:                     viewButtonRow
         anchors.bottomMargin:   1
@@ -64,17 +52,23 @@ Rectangle {
         anchors.bottom:         parent.bottom
         spacing:                ScreenTools.defaultFontPixelWidth / 2
 
-        QGCToolBarButton {
-            id:                     currentButton
-            Layout.preferredHeight: viewButtonRow.height
-            icon.source:            "/qmlimages/Gears.svg"
-            logo:                   true
-            onClicked:              mainWindow.showToolSelectDialog()
+        Rectangle {
+            height: parent.height
+            width: ScreenTools.defaultFontPixelWidth
+            color: Qt.rgba(0, 0, 0, 0)
         }
 
         MainStatusIndicator {
             Layout.preferredHeight: viewButtonRow.height
             visible:                currentToolbar === flyViewToolbar
+        }
+
+        QGCToolBarButton {
+            id:                     applicationSettingButton
+            Layout.preferredHeight: viewButtonRow.height
+            icon.source:            "/res/system.svg"
+            logo:                   true
+            onClicked:              mainWindow.showToolSelectDialog()
         }
 
         QGCButton {
@@ -109,57 +103,57 @@ Rectangle {
 
     //-------------------------------------------------------------------------
     //-- Branding Logo
-    Image {
-        anchors.right:          parent.right
-        anchors.top:            parent.top
-        anchors.bottom:         parent.bottom
-        anchors.margins:        ScreenTools.defaultFontPixelHeight * 0.66
-        visible:                currentToolbar !== planViewToolbar && _activeVehicle && !_communicationLost && x > (toolsFlickable.x + toolsFlickable.contentWidth + ScreenTools.defaultFontPixelWidth)
-        fillMode:               Image.PreserveAspectFit
-        source:                 _outdoorPalette ? _brandImageOutdoor : _brandImageIndoor
-        mipmap:                 true
+    //Image {
+    //    anchors.right:          parent.right
+    //    anchors.top:            parent.top
+    //    anchors.bottom:         parent.bottom
+    //    anchors.margins:        ScreenTools.defaultFontPixelHeight * 0.66
+    //    visible:                currentToolbar !== planViewToolbar && _activeVehicle && !_communicationLost && x > (toolsFlickable.x + toolsFlickable.contentWidth + ScreenTools.defaultFontPixelWidth)
+    //    fillMode:               Image.PreserveAspectFit
+    //    source:                 _outdoorPalette ? _brandImageOutdoor : _brandImageIndoor
+    //    mipmap:                 true
 
-        property bool   _outdoorPalette:        qgcPal.globalTheme === QGCPalette.Light
-        property bool   _corePluginBranding:    QGroundControl.corePlugin.brandImageIndoor.length != 0
-        property string _userBrandImageIndoor:  QGroundControl.settingsManager.brandImageSettings.userBrandImageIndoor.value
-        property string _userBrandImageOutdoor: QGroundControl.settingsManager.brandImageSettings.userBrandImageOutdoor.value
-        property bool   _userBrandingIndoor:    _userBrandImageIndoor.length != 0
-        property bool   _userBrandingOutdoor:   _userBrandImageOutdoor.length != 0
-        property string _brandImageIndoor:      brandImageIndoor()
-        property string _brandImageOutdoor:     brandImageOutdoor()
+    //    property bool   _outdoorPalette:        qgcPal.globalTheme === QGCPalette.Light
+    //    property bool   _corePluginBranding:    QGroundControl.corePlugin.brandImageIndoor.length != 0
+    //    property string _userBrandImageIndoor:  QGroundControl.settingsManager.brandImageSettings.userBrandImageIndoor.value
+    //    property string _userBrandImageOutdoor: QGroundControl.settingsManager.brandImageSettings.userBrandImageOutdoor.value
+    //    property bool   _userBrandingIndoor:    _userBrandImageIndoor.length != 0
+    //    property bool   _userBrandingOutdoor:   _userBrandImageOutdoor.length != 0
+    //    property string _brandImageIndoor:      brandImageIndoor()
+    //    property string _brandImageOutdoor:     brandImageOutdoor()
 
-        function brandImageIndoor() {
-            if (_userBrandingIndoor) {
-                return _userBrandImageIndoor
-            } else {
-                if (_userBrandingOutdoor) {
-                    return _userBrandingOutdoor
-                } else {
-                    if (_corePluginBranding) {
-                        return QGroundControl.corePlugin.brandImageIndoor
-                    } else {
-                        return _activeVehicle ? _activeVehicle.brandImageIndoor : ""
-                    }
-                }
-            }
-        }
+    //    function brandImageIndoor() {
+    //        if (_userBrandingIndoor) {
+    //            return _userBrandImageIndoor
+    //        } else {
+    //            if (_userBrandingOutdoor) {
+    //                return _userBrandingOutdoor
+    //            } else {
+    //                if (_corePluginBranding) {
+    //                    return QGroundControl.corePlugin.brandImageIndoor
+    //                } else {
+    //                    return _activeVehicle ? _activeVehicle.brandImageIndoor : ""
+    //                }
+    //            }
+    //        }
+    //    }
 
-        function brandImageOutdoor() {
-            if (_userBrandingOutdoor) {
-                return _userBrandingOutdoor
-            } else {
-                if (_userBrandingIndoor) {
-                    return _userBrandingIndoor
-                } else {
-                    if (_corePluginBranding) {
-                        return QGroundControl.corePlugin.brandImageOutdoor
-                    } else {
-                        return _activeVehicle ? _activeVehicle.brandImageOutdoor : ""
-                    }
-                }
-            }
-        }
-    }
+    //    function brandImageOutdoor() {
+    //        if (_userBrandingOutdoor) {
+    //            return _userBrandingOutdoor
+    //        } else {
+    //            if (_userBrandingIndoor) {
+    //                return _userBrandingIndoor
+    //            } else {
+    //                if (_corePluginBranding) {
+    //                    return QGroundControl.corePlugin.brandImageOutdoor
+    //                } else {
+    //                    return _activeVehicle ? _activeVehicle.brandImageOutdoor : ""
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 
     // Small parameter download progress bar
     Rectangle {
